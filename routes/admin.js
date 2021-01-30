@@ -8,10 +8,10 @@ const router =express.Router();
 // admin/add-prooduct => get
 router.get('/add-product',adminController.getAddProduct);
 
-// router.get('/products',adminController.getProducts);
+router.get('/products',adminController.getProducts);
 
 // admin/add-prooduct => post 
-router.post('/add-product',adminController.postAddProducts);
+router.post('/add-product',adminController.postAddProducts); 
 
 router.get('/edit-product/:productId',adminController.getEditProduct);
 
