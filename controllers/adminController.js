@@ -1,7 +1,7 @@
 const Product = require('../models/product');
 
 exports.getAddProduct=(req, res, next) =>{
-    res.render('admin/edit-product',{
+    res.render('admin/add-product',{
         pageTitle:"Add Product",
         path:'/admin/add-product',
         editing:false
@@ -21,11 +21,9 @@ exports.postAddProducts = (req,res,next)=>{
         description:desc,
         
     })
-    // console.log(title)
-    // what sheets man
      .then(result=>{
-            // console.log(result);
             console.log('created product');
+            return res.redirect('/');
         })
         .catch(err=>{
             console.log(err);
@@ -71,8 +69,7 @@ exports.postEditProduct = (req,res,next) =>{
         return product.save()
     })
     .then(result=>{
-        console.log('updated Product');
-        res.redirect('/admin/products');
+        return res.redirect('/admin/products');
 
     })
     .catch(err=>console.log(err));
