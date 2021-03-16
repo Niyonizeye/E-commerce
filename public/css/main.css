@@ -14,8 +14,11 @@ body{
     background-color: #dbc441;
 }
 .main-header__nav{
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .main-header__item-list{
     list-style: none;
@@ -63,7 +66,7 @@ body{
 }
 button{
     font: inherit;
-    float:right;
+    margin: 2% 25% 2% 25%;
     border: 1px solid #3e00a1;
     background: #3e00a1;
     color: #dbc441;
