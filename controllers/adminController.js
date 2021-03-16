@@ -2,11 +2,11 @@
 const Product = require('../models/product');
 
 exports.getAddProduct=(req, res, next) =>{
+
     res.render('admin/add-product',{
         pageTitle:"Add Product",
         path:'/admin/add-product',
-        editing:false,
-        isAuthenticated: req.session.isLoggedIn
+        editing:false
     })
 
 };
@@ -41,7 +41,6 @@ exports.getEditProduct=(req, res, next) =>{
     }
     const prodId = req.params.productId;
     Product.findById(prodId)
-    // Product.findByPk(prodId)
     .then(product => {
         if(!product){
             return res.redirect('/');
@@ -50,8 +49,7 @@ exports.getEditProduct=(req, res, next) =>{
             pageTitle:"Edit Product",
             path:'/admin/edit-product',
             editing:editMode,
-            product:product,
-            isAuthenticated: req.session.isLoggedIn
+            product:product
             
         });
     })
@@ -82,15 +80,12 @@ exports.postEditProduct = (req,res,next) =>{
 }
 exports.getProducts = (req,res,next) => {
     Product.find()
-    // .select('title price -_id')
-    // .populate('userId','name')
     .then(products=>{
         console.log(products);
         res.render('admin/products',{
             prods:products,
             pageTitle: "Admin Products",
-            path:'/admin/products',
-            isAuthenticated: req.session.isLoggedIn
+            path:'/admin/products'
            
         });
     })
