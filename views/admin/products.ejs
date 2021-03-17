@@ -1,36 +1,54 @@
 <%- include('../includes/head.ejs') %>
 </head>
-    <body>
+<body>
 <%- include('../includes/navigation.ejs') %>
-    <main>
-        <% if (prods.length > 0){ %>
-           <div class="grid">
-               <% for(let product of prods) { %>
-                    <article class="card product-item">
-                        <header class="card__header">
-                            <h1 class="product__title"> <%= product.title %></h1>
 
-                        </header>
-                        <div class="card__image">
-                            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" srcset="">
-                        </div>
-                        <div class="card__content">
-                            <h2 class="product__price">$<%= product.price %></h2>
-                            <p class="product__description"><%= product.description %></p>
-                        </div>
-                        <div class="card__actions">
-                            <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
-                            <form action="/admin/delete-product" method="post">
-                                <input type="hidden" name="productId" value="<%= product._id %>">
-                                <button type="submit" class="btn">Delete</button>
-                            </form>
-                            
-                        </div>
-                    </article>
+
+<div class="services-section" id="services">
+    <% if (prods.length > 0){ %>
+    <div class="container"> 
+        
+        <div class="services-header">
+            <h3>Your Products List</h3>
+                <p>This is Our Products. </p>
+        </div>
+        
+        <div class="services-sectiongrids">
+            <div class="row">
+                <% for(let product of prods) { %>
+                    <div class="col-md-3 services-grid">
+                            <div class="our-services speedup">
+                                <h4><%= product.title %></h4>
+                                <img class="product_Image" src="<%= product.imageUrl %>" alt="<%= product.title %>" srcset="">					
+                                <h2 class="product__price">price<%= product.price %></h2>
+                                <p class="product__description"></p>
+                                <p><%= product.description %></p>
+                                <div class="d-flex justify-content-center">
+                                    <div><a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn btn-primary">Edit</a></div>
+                                    <div>
+                                        <form action="/admin/delete-product" method="post">
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">                                    
+                                            <input type="hidden" name="productId" value="<%= product._id %>">
+                                            <button type="submit" class="btn btn-danger">Delete</button>                                         
+                                        </form>
+                                    </div>
+                              </div>
+                            </div>                  
+                    </div>
                 <% } %>
-           </div>
-           <% } else{ %>
-            <h1>NO products found !!</h1>
-            <% } %>
-    </main>
+            </div>
+            <div class="clearfix"></div>
+            <div class="arrow1">
+                <a href="#contact" class="scroll"><img src="images/arrow1.png" alt=""/></a>
+                 </div>
+       </div>
+      
+    </div>
+    <% } else{ %>
+        <h1>NO products found !!</h1>
+        <% } %>
+    </div>
+</div>
+
+
     <%- include('../includes/end.ejs') %>
