@@ -1,72 +1,38 @@
 <%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
 </head>
-<body>
-<%- include('../includes/navigation.ejs') %>
-    <div class="container sticky-top searchDivContainer">
-        <div class="row ">
-            <div class="col-sm-3">Icon Logo</div>
-            <div class="col-sm-6">
-                <div class="searchDiv">
-                    <form class="form-inline my-2">
-                        <div class="row">
-                            <div class="col-sm-10"><input class="form-control" type="search" placeholder="Search" aria-label="Search"> </div>
-                            <div class="col-sm-2"><button type="submit"  class="btn btn-outline-warning">Search</button></div>
-                        </div>                    
-                    </form>
-                </div>
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    
-   </div>
-	<div class="content" style="border-bottom: 2px solid black;">
-		<div class="about-section" id="about" id="about">
-            <div class="container">
 
-                Some content
-            </div>
-        </div>
-	
-	</div>
-    
-	<div class="services-section" id="services">
-        <% if (prods.length > 0){ %>
-		<div class="container"> 
-            
-			<div class="services-header">
-				<h3>Our Products</h3>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit blanditiis nostrum fuga temporibus asperiores optio. Quos nostrum, odio sequi fuga animi voluptatum, suscipit perspiciatis rerum nulla voluptas ut debitis ex nihil. Delectus a quam, dolorum nulla harum saepe nesciunt eveniet blanditiis? Repudiandae cum minima excepturi culpa, libero minus corrupti deserunt. </p>
-			</div>
-            
-			<div class="services-sectiongrids">
-                <div class="row">
-                    <% for(let product of prods) { %>
-                        
-                        <div class="col-md-2 services-grid">
-                                <div class="our-services speedup p-0 m-0">
-                                    <h4><%= product.title %></h4>
-                                    <img class="product_Image" src="<%= product.imageUrl %>" alt="<%= product.title %>" srcset="">					
-                                    <h4 class="product__price">price<%= product.price %></h4>
-                                    <p class="product__description"></p>
-                                    <p><%= product.description %></p>
-                                    <a href="/products/<%= product._id %>" class="btn">Details</a>
-                                    <% if (isAuthenticated) { %> 
-                                        <%- include('../includes/add-to-cart.ejs',{product:product}) %>
-                                    <% } %>
-                                </div>                  
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <% for (let product of prods) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="/<%= product.imageUrl %>"
+                                alt="<%= product.title %>">
                         </div>
-                    <% } %>
-                </div>
-				<div class="clearfix"></div>
-				<div class="arrow1">
-					<a href="#contact" class="scroll"><img src="images/arrow1.png" alt=""/></a>
-		 			</div>
-		   </div>
-          
-		</div>
-        <% } else{ %>
-            <h1>NO products found !!</h1>
-            <% } %>
-		</div>
-	</div>
-	<%- include('../includes/end.ejs') %>
+                        <div class="card__content">
+                            <h2 class="product__price">$<%= product.price %></h2>
+                            <p class="product__description"><%= product.description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <a href="/products/<%= product._id %>" class="btn">Details</a>
+                            <% if (isAuthenticated) { %>
+                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            <% } %>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+            <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

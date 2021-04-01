@@ -1,40 +1,45 @@
 <%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
-<body>
-<%- include('../includes/navigation.ejs') %>
 
-<main>  
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <div class="services-header">
-                    <h4>Create an Account</h4>
-                </div>
-             <% if (errorMessage) { %>
-                 <div class="alert alert-danger mt-4" role="alert"><%= errorMessage %></div>
-             <% } %>
-             <form action="/signup" method="POST" novalidate>
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <div class="mb-3">
-                    <label for="exampleInputFullName" class="form-label">Full Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputFullName" >
-                </div>
-                 <div class="mb-3">
-                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                     
-                    
-                 </div>
-                 <div class="mb-3">
-                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                     <input type="password" name="password"  class="form-control" id="exampleInputPassword1">
-                 </div>
-                 <button type="submit" class="btn btn-primary">Signup</button><br>
-             </form>
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form" action="/signup" method="POST" novalidate>
+            <div class="form-control">
+                <label for="email">E-Mail</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="<%= oldInput.email %>">
             </div>
-            <div class="col-sm-4"></div>
-        </div>
-    </div>
-</main>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    value="<%= oldInput.password %>">
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword">Confirm Password</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>"
+                    type="password" 
+                    name="confirmPassword" 
+                    id="confirmPassword" 
+                    value="<%= oldInput.confirmPassword %>">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Signup</button>
+        </form>
+    </main>
 <%- include('../includes/end.ejs') %>

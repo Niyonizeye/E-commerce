@@ -1,37 +1,39 @@
 <%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
+
 <body>
-<%- include('../includes/navigation.ejs') %>
+   <%- include('../includes/navigation.ejs') %>
 
-<main>
-   <div class="container">
-
-       <div class="row">
-           <div class="col-sm-4"></div>
-           <div class="col-sm-4">
-            <div class="services-header">
-				<h4>Sign in NM-Shop</h4>
-			</div>
-            <% if (errorMessage) { %>
-                <div class="alert alert-danger mt-4" role="alert"><%= errorMessage %></div>
-            <% } %>
-
-            <form action="/login" method="POST">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name="password"  class="form-control" id="exampleInputPassword1">
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button><br>
-                <a href="/reset">Reset Password</a>
-            </form>
-           </div>
-           <div class="col-sm-4"></div>
-       </div>
-   </div>
-</main>
+    <main>
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form" action="/login" method="POST">
+            <div class="form-control">
+                <label for="email">E-Mail</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="<%= oldInput.email %>">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    value="<%= oldInput.password %>">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <div class="centered">
+            <a href="/reset">Reset Password</a>
+        </div>
+    </main>
 <%- include('../includes/end.ejs') %>

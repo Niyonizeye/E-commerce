@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "JeanPaul",
+        "MONGO_PASSWORD": "dusabimana2019",
+        "MONGO_DEFAULT_DATABASE": "nodecomplete",
+        "STRIPE_KEY": "sk_test_51IY6i4DUt1wV6JbpM2dpi3y6PmDynu3xtomEWbtteS3NnqfBACYxdQrOn5M3FaZxUdLxUIsZDPPZk0nnSP1H3hs800XV1NDvHh"
+    }
+}
