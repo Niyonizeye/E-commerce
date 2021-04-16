@@ -1,43 +1,47 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
-    </head>
+</head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
+<body>
+    <%- include('../includes/navigation.ejs') %>
 
+   <div class="container-fluid">
+       <div class="container">
             <main>
+                <div class="product-header_content">
+                    <h3>Latest Products</h3>
+                </div>
                 <% if (prods.length > 0) { %>
-                    <div class="grid">
-                        <% for (let product of prods) { %>
-                            <article class="card product-item">
-                                <header class="card__header">
-                                    <h1 class="product__title">
-                                        <%= product.title %>
-                                    </h1>
-                                </header>
-                                <div class="card__image">
-                                    <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
-                                </div>
-                                <div class="card__content">
-                                    <h2 class="product__price">$
-                                        <%= product.price %>
-                                    </h2>
-                                    <p class="product__description">
-                                        <%= product.description %>
-                                    </p>
-                                </div>
-                                <div class="card__actions">
-                                    <a href="/products/<%= product._id %>" class="btn">Details</a>
-                                    <% if (isAuthenticated) { %>
-                                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-                                    <% } %>
-                                </div>
-                            </article>
-                            <% } %>
+                    <div class="container">
+                            <div class="row">
+                                <% for (let product of prods) { %>
+                                    <div class="col-md-2" style="padding: 0; margin-bottom: 5px;">
+                                        <article class="card product-item">
+                                            <div class="card__image">
+                                                <a href="/products/<%= product._id %>">
+                                                     <img src="/<%= product.imageUrl %>"
+                                                    alt="<%= product.title %>">
+                                                </a>    
+                                            </div>
+                                            <div class="card__content">
+                                                <header class="card__header">
+                                                    <h1 class="product__title"><a href="/products/<%= product._id %>"><%= product.title %></a></h1>
+                                                </header>
+                                                <h3 class="product__price"><%= product.price %> Rwf</h3>
+                                            </div>
+                                        </article>
+                                    </div>  
+                                <% } %>
+                            </div>                           
+                      
                     </div>
+                    <hr>
                     <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
-                    <% } else { %>
-                        <h1>No Products Found!</h1>
-                        <% } %>
+                <% } else { %>
+                    <h1>No Products Found!</h1>
+                <% } %>
             </main>
-            <%- include('../includes/end.ejs') %>
+       </div>
+   </div>
+<%- include('../includes/end.ejs') %>
+<%- include('../includes/footer.ejs') %>

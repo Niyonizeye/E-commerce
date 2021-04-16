@@ -78,6 +78,45 @@ form {
   color: #ffeb3b;
 }
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.product_in_cart{
+  color: red;
+}
+
 .mobile-nav {
   width: 30rem;
   height: 100vh;
@@ -161,21 +200,12 @@ form {
   z-index: 5;
   display: none;
 }
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: stretch;
-}
-
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
-.card__header,
 .card__content {
-  padding: 1rem;
+  padding: 0.7rem;
 }
 
 .card__header h1,
@@ -183,12 +213,12 @@ form {
 .card__content h2,
 .card__content p {
   margin: 0;
+  font-size: 14px;
 }
 
 .card__image {
   width: 100%;
-  height: 10rem;
-  text-align: center;
+  height:8rem;
 }
 
 .card__image img {
@@ -259,9 +289,10 @@ form {
 .pagination a {
   text-decoration: none;
   color: #00695c;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border: 1px solid #00695c;
-  margin: 0 1rem;
+  margin: 0 0.4rem;
+  border-radius: 50px;
 }
 
 .pagination a:hover,

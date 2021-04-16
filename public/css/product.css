@@ -8,20 +8,27 @@
 .product-item {
     width: 20rem;
     max-width: 95%;
-    margin: 1rem;
 }
-
 .product__title {
     font-size: 1.2rem;
-    text-align: center;
+    text-align: left;
 }
 
 .product__price {
-    text-align: center;
-    color: #4d4d4d;
-    margin-bottom: 0.5rem;
+    text-align: left;
+    color: red;
+    margin: 0.4rem 0 0.2rem 0;
+    font-size: 23px;
 }
 
+
 .product__description {
-    text-align: center;
+    text-align: left;
+}
+h1 a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.719);
+}
+h1 a:hover{
+    color: red;
 }
