@@ -22,7 +22,7 @@ const User = require('./models/user');
 console.log(process.env.NODE_ENV);
 
 const MONGODB_URI =
-`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.uwya5.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true`;
+`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.uwya5.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true`
 const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
