@@ -33,10 +33,13 @@
                     <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
                 </li>
             <% } else { %>
-                <li class="main-header__item">
-                    <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart"><span class="product_in_cart">3</span> Cart</a>
+                <li class="main-header__item"> 
+                    <span class="cart-basket d-flex align-items-center justify-content-center" style="color: red;">0</span>
+                    <i class="fas fa fa-shopping-cart fa-lg" style="color: white;"></i>
                 </li>
-                
+                <li class="main-header__item" style="line-height: 60px;">
+                    <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart"> Cart</a>
+                </li>
                 <li class="main-header__item">
                     <div class="dropdown">
                         <button class="dropbtn">MyAccount</button>
@@ -45,7 +48,7 @@
                           <a href="#">
                             <form action="/logout" method="post">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                <button type="submit">Logout</button>
+                                <button type="submit" style="color: black;">Logout</button>
                             </form>
                           </a>
                         </div>

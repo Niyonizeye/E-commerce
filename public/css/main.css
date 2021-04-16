@@ -80,7 +80,7 @@ form {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #00695c;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -96,7 +96,7 @@ form {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 110px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -108,14 +108,11 @@ form {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #00695c;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-.product_in_cart{
-  color: red;
-}
+.dropdown:hover .dropbtn {background-color: #00695c;}
 
 .mobile-nav {
   width: 30rem;
