@@ -83,7 +83,14 @@ form {
   background: whitesmoke;
   min-height: 80px;
   padding-top:15px ;
-  /* opacity: 0.4; */
+}
+/* .logo-div{
+  height: 80px;
+} */
+.logo-image{
+  width: 80px;
+  height: 50px;
+  color: white;
 }
 .topnav {
   overflow: hidden;
@@ -167,8 +174,8 @@ form {
 }
 
 footer{
-  background: rgba(29, 28, 28, 0.705);
-  color: white;
+  background: #111517;
+  color: #fff;
   padding-top: 15px;
 }
 
