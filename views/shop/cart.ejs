@@ -25,7 +25,7 @@
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <button type="submit" class="btn">Order Now!</button>
                     </form>-->
-                    <a class="btn" href="/checkout">Order Now!</a>
+                    <a class="btn btn-primary" href="/checkout">Order Now!</a>
                 </div>
                 
             <% } else { %>
@@ -33,3 +33,4 @@
             <% } %>
         </main>
         <%- include('../includes/end.ejs') %>
+        <%- include('../includes/footer.ejs') %>
