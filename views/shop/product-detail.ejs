@@ -1,4 +1,5 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
     </head>
 
     <body>
@@ -13,7 +14,10 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2><%= product.price %></h2>
+                        <h2 class="product__title ">Product:  <%= product.title %></h2>
+                        <h2 class="product__price ">Price: <%= product.price %> Rwf</h2>
+                        <br>
+                        <label style="border-bottom: 1px solid gray; padding-bottom: 10px; margin-bottom: 10px;">Product description</label>
                         <p><%= product.description %></p>
                         <% if (isAuthenticated) { %>
                             <%- include('../includes/add-to-cart.ejs', {product: product}) %>
